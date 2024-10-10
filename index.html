@@ -24,6 +24,8 @@
             font-family: 'Roboto', sans-serif;
             line-height: 1.6;
             color: #333;
+            background-color: #fff;
+            transition: background-color 0.3s, color 0.3s;
         }
 
         a {
@@ -54,12 +56,24 @@
             top: 0;
             z-index: 1000;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        header.dark {
+            background: #333;
+            color: #fff;
+            box-shadow: 0 2px 5px rgba(255,255,255,0.1);
         }
 
         .logo a {
             font-size: 24px;
             font-weight: bold;
             color: #333;
+            transition: color 0.3s;
+        }
+
+        header.dark .logo a {
+            color: #fff;
         }
 
         nav {
@@ -84,6 +98,10 @@
             color: #007BFF;
         }
 
+        header.dark nav ul li a:hover {
+            color: #66b2ff;
+        }
+
         /* Hamburger Menu (for mobile) */
         .hamburger {
             display: none;
@@ -93,7 +111,7 @@
 
         /* Hero Section */
         #home {
-            background: url('https://via.placeholder.com/1920x1080') no-repeat center center/cover;
+            background: url('https://images.unsplash.com/photo-1503264116251-35a269479413?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
             height: 100vh;
             display: flex;
             align-items: center;
@@ -147,10 +165,35 @@
             background: #0056b3;
         }
 
+        /* Dark Mode Toggle Button */
+        .dark-mode-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: background 0.3s ease;
+            z-index: 1001;
+        }
+
+        .dark-mode-toggle:hover {
+            background: #0056b3;
+        }
+
         /* About Section */
         #about {
             padding: 100px 0;
             background: #f9f9f9;
+        }
+
+        #about.dark {
+            background: #444;
+            color: #fff;
         }
 
         #about h2 {
@@ -158,6 +201,11 @@
             margin-bottom: 50px;
             font-size: 36px;
             color: #333;
+            transition: color 0.3s;
+        }
+
+        #about.dark h2 {
+            color: #fff;
         }
 
         .about-content {
@@ -172,6 +220,11 @@
             max-width: 350px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: box-shadow 0.3s;
+        }
+
+        .about-content img:hover {
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
         }
 
         .about-text {
@@ -182,6 +235,11 @@
             margin-bottom: 20px;
             font-size: 18px;
             color: #555;
+            transition: color 0.3s;
+        }
+
+        #about.dark .about-text p {
+            color: #ddd;
         }
 
         .about-text .btn {
@@ -197,11 +255,21 @@
             padding: 100px 0;
         }
 
+        #projects.dark {
+            background: #333;
+            color: #fff;
+        }
+
         #projects h2 {
             text-align: center;
             margin-bottom: 50px;
             font-size: 36px;
             color: #333;
+            transition: color 0.3s;
+        }
+
+        #projects.dark h2 {
+            color: #fff;
         }
 
         .projects-grid {
@@ -216,6 +284,11 @@
             overflow: hidden;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        #projects.dark .project-item {
+            background: #555;
+            color: #fff;
         }
 
         .project-item:hover {
@@ -238,9 +311,18 @@
             color: #007BFF;
         }
 
+        #projects.dark .project-info h3 {
+            color: #66b2ff;
+        }
+
         .project-info p {
             margin-bottom: 15px;
             color: #555;
+            transition: color 0.3s;
+        }
+
+        #projects.dark .project-info p {
+            color: #ddd;
         }
 
         .project-info .btn {
@@ -257,11 +339,21 @@
             background: #f9f9f9;
         }
 
+        #skills.dark {
+            background: #444;
+            color: #fff;
+        }
+
         #skills h2 {
             text-align: center;
             margin-bottom: 50px;
             font-size: 36px;
             color: #333;
+            transition: color 0.3s;
+        }
+
+        #skills.dark h2 {
+            color: #fff;
         }
 
         .skills-grid {
@@ -283,9 +375,18 @@
             margin-bottom: 15px;
         }
 
+        #skills.dark .skill i {
+            color: #66b2ff;
+        }
+
         .skill h3 {
             font-size: 20px;
             color: #333;
+            transition: color 0.3s;
+        }
+
+        #skills.dark .skill h3 {
+            color: #fff;
         }
 
         /* Progress Bars for Skills */
@@ -304,9 +405,18 @@
             transition: width 1.5s ease-in-out;
         }
 
+        #skills.dark .progress {
+            background: #666;
+        }
+
         /* Contact Section */
         #contact {
             padding: 100px 0;
+        }
+
+        #contact.dark {
+            background: #333;
+            color: #fff;
         }
 
         #contact h2 {
@@ -314,6 +424,11 @@
             margin-bottom: 50px;
             font-size: 36px;
             color: #333;
+            transition: color 0.3s;
+        }
+
+        #contact.dark h2 {
+            color: #fff;
         }
 
         #contact-form {
@@ -323,6 +438,12 @@
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: background 0.3s, color 0.3s;
+        }
+
+        #contact.dark #contact-form {
+            background: #555;
+            color: #fff;
         }
 
         .form-group {
@@ -334,6 +455,11 @@
             margin-bottom: 8px;
             color: #333;
             font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        #contact.dark .form-group label {
+            color: #fff;
         }
 
         .form-group input,
@@ -344,12 +470,20 @@
             border-radius: 5px;
             resize: vertical;
             font-size: 16px;
+            transition: border-color 0.3s;
         }
 
         .form-group input:focus,
         .form-group textarea:focus {
             border-color: #007BFF;
             outline: none;
+        }
+
+        #contact.dark .form-group input,
+        #contact.dark .form-group textarea {
+            background: #666;
+            border: 1px solid #555;
+            color: #fff;
         }
 
         #contact-form .btn {
@@ -449,6 +583,11 @@
     </style>
 </head>
 <body>
+    <!-- Dark Mode Toggle Button -->
+    <button class="dark-mode-toggle" id="dark-mode-toggle" aria-label="Toggle Dark Mode">
+        <i class="fas fa-moon"></i>
+    </button>
+
     <!-- Header / Navigation -->
     <header>
         <div class="container">
@@ -484,7 +623,7 @@
         <div class="container">
             <h2>About Me</h2>
             <div class="about-content">
-                <img src="https://via.placeholder.com/350" alt="Profile Picture">
+                <img src="https://images.google.com/photo1.jpg" alt="Profile Picture">
                 <div class="about-text">
                     <p>
                         I'm a passionate web developer with over 5 years of experience in building responsive and user-friendly websites. I enjoy turning complex problems into simple, beautiful, and intuitive designs.
@@ -492,7 +631,7 @@
                     <p>
                         My expertise includes HTML, CSS, JavaScript, and modern frameworks like React and Vue.js. I am always eager to learn new technologies and take on new challenges.
                     </p>
-                    <a href="#" class="btn">Download Resume</a>
+                    <a href="https://drive.google.com/uc?export=download&id=YOUR_RESUME_FILE_ID" class="btn" target="_blank" rel="noopener">Download Resume</a>
                 </div>
             </div>
         </div>
@@ -505,7 +644,7 @@
             <div class="projects-grid">
                 <!-- Project Item 1 -->
                 <div class="project-item">
-                    <img src="https://via.placeholder.com/400x200" alt="Project 1">
+                    <img src="https://images.google.com/project1.jpg" alt="Project One">
                     <div class="project-info">
                         <h3>Project One</h3>
                         <p>A brief description of Project One, highlighting the technologies used and the problem it solves.</p>
@@ -514,7 +653,7 @@
                 </div>
                 <!-- Project Item 2 -->
                 <div class="project-item">
-                    <img src="https://via.placeholder.com/400x200" alt="Project 2">
+                    <img src="https://images.google.com/project2.jpg" alt="Project Two">
                     <div class="project-info">
                         <h3>Project Two</h3>
                         <p>A brief description of Project Two, highlighting the technologies used and the problem it solves.</p>
@@ -523,7 +662,7 @@
                 </div>
                 <!-- Project Item 3 -->
                 <div class="project-item">
-                    <img src="https://via.placeholder.com/400x200" alt="Project 3">
+                    <img src="https://images.google.com/project3.jpg" alt="Project Three">
                     <div class="project-info">
                         <h3>Project Three</h3>
                         <p>A brief description of Project Three, highlighting the technologies used and the problem it solves.</p>
@@ -598,122 +737,4 @@
                     <label for="email">Email <span style="color:red;">*</span></label>
                     <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
                 </div>
-                <div class="form-group">
-                    <label for="subject">Subject <span style="color:red;">*</span></label>
-                    <input type="text" id="subject" name="subject" placeholder="Subject" required>
-                </div>
-                <div class="form-group">
-                    <label for="message">Message <span style="color:red;">*</span></label>
-                    <textarea id="message" name="message" rows="5" placeholder="Your message..." required></textarea>
-                </div>
-                <button type="submit" class="btn">Send Message</button>
-            </form>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Your Name. All rights reserved.</p>
-            <div class="social-links">
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-                <a href="#"><i class="fab fa-github"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <!-- Add more social links as needed -->
-            </div>
-        </div>
-    </footer>
-
-    <!-- Inline JavaScript -->
-    <script>
-        // Toggle Navigation Menu on Mobile
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('nav-links');
-
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-
-        // Close menu when a link is clicked (optional)
-        const navItems = navLinks.querySelectorAll('a');
-        navItems.forEach(item => {
-            item.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-            });
-        });
-
-        // Form Validation and Submission
-        const contactForm = document.getElementById('contact-form');
-
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault(); // Prevent actual form submission
-
-            // Collect form data
-            const name = document.getElementById('name').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const subject = document.getElementById('subject').value.trim();
-            const message = document.getElementById('message').value.trim();
-
-            // Simple validation
-            if(name === '' || email === '' || subject === '' || message === '') {
-                alert('Please fill in all required fields.');
-                return;
-            }
-
-            // Email validation
-            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if(!emailPattern.test(email)) {
-                alert('Please enter a valid email address.');
-                return;
-            }
-
-            // Prepare data for sending (e.g., using Fetch API or EmailJS)
-            // Here, we'll just simulate a successful submission
-            alert('Thank you for your message! I will get back to you soon.');
-            contactForm.reset();
-        });
-
-        // Smooth Scrolling for Navigation Links
-        const links = document.querySelectorAll('a[href^="#"]');
-
-        for(const link of links){
-            link.addEventListener('click', function(e){
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if(target){
-                    window.scrollTo({
-                        top: target.offsetTop - 70, // Adjust for fixed header
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        }
-
-        // Animate Progress Bars on Scroll
-        const progressBars = document.querySelectorAll('.progress-bar');
-
-        const animateProgress = () => {
-            progressBars.forEach(bar => {
-                const width = bar.style.width;
-                bar.style.width = '0';
-                setTimeout(() => {
-                    bar.style.width = width;
-                }, 100);
-            });
-        };
-
-        // Intersection Observer to trigger animation when skills section is in view
-        const skillsSection = document.getElementById('skills');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if(entry.isIntersecting){
-                    animateProgress();
-                    observer.unobserve(skillsSection);
-                }
-            });
-        }, { threshold: 0.5 });
-
-        observer.observe(skillsSection);
-    </script>
-</body>
-</html>
+         
