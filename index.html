@@ -3,738 +3,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Professional Portfolio</title>
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHq6VdAygixOlxHBXNp8yA06nfgPzjX+h1mtRfLM5LiyZcEXeD6e3rK8lYVnBzYg5c6YhYyg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
-    <!-- Inline CSS -->
+    <title>Student Login Form</title>
     <style>
-        /* Reset and Global Styles */
+        /* Basic Reset */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: Arial, sans-serif;
         }
 
         body {
-            font-family: 'Roboto', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #fff;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        img {
-            max-width: 100%;
-            display: block;
-        }
-
-        /* Container */
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: auto;
-            overflow: hidden;
-            padding: 0 15px;
-        }
-
-        /* Header / Navigation */
-        header {
-            background: #fff;
-            padding: 20px 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        header.dark {
-            background: #333;
-            color: #fff;
-            box-shadow: 0 2px 5px rgba(255,255,255,0.1);
-        }
-
-        .logo a {
-            font-size: 24px;
-            font-weight: bold;
-            color: #333;
-            transition: color 0.3s;
-        }
-
-        header.dark .logo a {
-            color: #fff;
-        }
-
-        nav {
-            float: right;
-        }
-
-        nav ul {
-            list-style: none;
-        }
-
-        nav ul li {
-            display: inline-block;
-            margin-left: 20px;
-        }
-
-        nav ul li a {
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        nav ul li a:hover {
-            color: #007BFF;
-        }
-
-        header.dark nav ul li a:hover {
-            color: #66b2ff;
-        }
-
-        /* Hamburger Menu (for mobile) */
-        .hamburger {
-            display: none;
-            font-size: 24px;
-            cursor: pointer;
-        }
-
-        /* Hero Section */
-        #home {
-            background: url('https://images.unsplash.com/photo-1503264116251-35a269479413?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
-            height: 100vh;
+            background-color: #f0f2f5;
             display: flex;
+            justify-content: center;
             align-items: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        h2 {
             text-align: center;
-            padding-top: 80px; /* To prevent content from hiding behind fixed header */
-            position: relative;
-        }
-
-        #home::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5); /* Overlay for better text visibility */
-        }
-
-        #home .content {
-            position: relative;
-            z-index: 1;
-            color: #fff;
-        }
-
-        #home h1 {
-            font-size: 48px;
             margin-bottom: 20px;
+            color: #333;
         }
 
-        #home h1 span {
-            color: #007BFF;
+        .input-group {
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
         }
 
-        #home p {
-            font-size: 20px;
-            margin-bottom: 30px;
+        .input-group label {
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        .input-group input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
         }
 
         .btn {
-            display: inline-block;
-            padding: 12px 25px;
-            background: #007BFF;
-            color: #fff;
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
             border: none;
-            border-radius: 25px;
+            padding: 10px;
+            border-radius: 5px;
             cursor: pointer;
-            transition: background 0.3s ease;
+            font-size: 18px;
+            transition: background-color 0.3s;
         }
 
         .btn:hover {
-            background: #0056b3;
+            background-color: #45a049;
         }
 
-        /* Dark Mode Toggle Button */
-        .dark-mode-toggle {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: #007BFF;
-            color: #fff;
-            border: none;
-            padding: 15px;
-            border-radius: 50%;
-            cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: background 0.3s ease;
-            z-index: 1001;
-        }
-
-        .dark-mode-toggle:hover {
-            background: #0056b3;
-        }
-
-        /* About Section */
-        #about {
-            padding: 100px 0;
-            background: #f9f9f9;
-        }
-
-        #about.dark {
-            background: #444;
-            color: #fff;
-        }
-
-        #about h2 {
+        .error-message {
+            color: red;
             text-align: center;
-            margin-bottom: 50px;
-            font-size: 36px;
-            color: #333;
-            transition: color 0.3s;
-        }
-
-        #about.dark h2 {
-            color: #fff;
-        }
-
-        .about-content {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 50px;
-        }
-
-        .about-content img {
-            flex: 1;
-            max-width: 350px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transition: box-shadow 0.3s;
-        }
-
-        .about-content img:hover {
-            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
-        }
-
-        .about-text {
-            flex: 2;
-        }
-
-        .about-text p {
-            margin-bottom: 20px;
-            font-size: 18px;
-            color: #555;
-            transition: color 0.3s;
-        }
-
-        #about.dark .about-text p {
-            color: #ddd;
-        }
-
-        .about-text .btn {
-            background: #28a745;
-        }
-
-        .about-text .btn:hover {
-            background: #1e7e34;
-        }
-
-        /* Projects Section */
-        #projects {
-            padding: 100px 0;
-        }
-
-        #projects.dark {
-            background: #333;
-            color: #fff;
-        }
-
-        #projects h2 {
-            text-align: center;
-            margin-bottom: 50px;
-            font-size: 36px;
-            color: #333;
-            transition: color 0.3s;
-        }
-
-        #projects.dark h2 {
-            color: #fff;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .project-item {
-            background: #fff;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        #projects.dark .project-item {
-            background: #555;
-            color: #fff;
-        }
-
-        .project-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
-        .project-item img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .project-info {
-            padding: 20px;
-        }
-
-        .project-info h3 {
-            margin-bottom: 10px;
-            color: #007BFF;
-        }
-
-        #projects.dark .project-info h3 {
-            color: #66b2ff;
-        }
-
-        .project-info p {
-            margin-bottom: 15px;
-            color: #555;
-            transition: color 0.3s;
-        }
-
-        #projects.dark .project-info p {
-            color: #ddd;
-        }
-
-        .project-info .btn {
-            background: #6c757d;
-        }
-
-        .project-info .btn:hover {
-            background: #5a6268;
-        }
-
-        /* Skills Section */
-        #skills {
-            padding: 100px 0;
-            background: #f9f9f9;
-        }
-
-        #skills.dark {
-            background: #444;
-            color: #fff;
-        }
-
-        #skills h2 {
-            text-align: center;
-            margin-bottom: 50px;
-            font-size: 36px;
-            color: #333;
-            transition: color 0.3s;
-        }
-
-        #skills.dark h2 {
-            color: #fff;
-        }
-
-        .skills-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
-        }
-
-        .skill {
-            text-align: center;
-            flex: 1 1 150px;
-            position: relative;
-        }
-
-        .skill i {
-            font-size: 50px;
-            color: #007BFF;
-            margin-bottom: 15px;
-        }
-
-        #skills.dark .skill i {
-            color: #66b2ff;
-        }
-
-        .skill h3 {
-            font-size: 20px;
-            color: #333;
-            transition: color 0.3s;
-        }
-
-        #skills.dark .skill h3 {
-            color: #fff;
-        }
-
-        /* Progress Bars for Skills */
-        .progress {
-            width: 100%;
-            background: #e0e0e0;
-            border-radius: 25px;
-            overflow: hidden;
             margin-top: 10px;
+            display: none;
         }
 
-        .progress-bar {
-            height: 10px;
-            background: #007BFF;
-            width: 0;
-            transition: width 1.5s ease-in-out;
-        }
-
-        #skills.dark .progress {
-            background: #666;
-        }
-
-        /* Contact Section */
-        #contact {
-            padding: 100px 0;
-        }
-
-        #contact.dark {
-            background: #333;
-            color: #fff;
-        }
-
-        #contact h2 {
+        .success-message {
+            color: green;
             text-align: center;
-            margin-bottom: 50px;
-            font-size: 36px;
-            color: #333;
-            transition: color 0.3s;
-        }
-
-        #contact.dark h2 {
-            color: #fff;
-        }
-
-        #contact-form {
-            max-width: 600px;
-            margin: auto;
-            background: #f9f9f9;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transition: background 0.3s, color 0.3s;
-        }
-
-        #contact.dark #contact-form {
-            background: #555;
-            color: #fff;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: #333;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        #contact.dark .form-group label {
-            color: #fff;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            resize: vertical;
-            font-size: 16px;
-            transition: border-color 0.3s;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            border-color: #007BFF;
-            outline: none;
-        }
-
-        #contact.dark .form-group input,
-        #contact.dark .form-group textarea {
-            background: #666;
-            border: 1px solid #555;
-            color: #fff;
-        }
-
-        #contact-form .btn {
-            width: 100%;
-            padding: 15px;
-            background: #007BFF;
-            color: #fff;
-            border: none;
-            font-size: 18px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-
-        #contact-form .btn:hover {
-            background: #0056b3;
-        }
-
-        /* Footer */
-        footer {
-            background: #333;
-            color: #fff;
-            padding: 30px 0;
-            text-align: center;
-        }
-
-        footer .social-links a {
-            color: #fff;
-            margin: 0 10px;
-            font-size: 20px;
-            transition: color 0.3s ease;
-        }
-
-        footer .social-links a:hover {
-            color: #007BFF;
-        }
-
-        /* Responsive Styles */
-        @media (max-width: 992px) {
-            .about-content {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .about-content img {
-                max-width: 100%;
-            }
-        }
-
-        @media (max-width: 768px) {
-            nav ul {
-                display: none;
-                flex-direction: column;
-                background: #fff;
-                position: absolute;
-                top: 70px;
-                right: 20px;
-                width: 200px;
-                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-                border-radius: 5px;
-                padding: 10px 0;
-            }
-
-            nav ul.active {
-                display: flex;
-            }
-
-            nav ul li {
-                margin: 15px 0;
-                text-align: center;
-            }
-
-            .hamburger {
-                display: block;
-                float: right;
-            }
-
-            #home {
-                padding-top: 100px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            #home h1 {
-                font-size: 32px;
-            }
-
-            #home p {
-                font-size: 18px;
-            }
-
-            .btn {
-                padding: 10px 20px;
-                font-size: 16px;
-            }
+            margin-top: 10px;
+            display: none;
         }
     </style>
 </head>
 <body>
-    <!-- Dark Mode Toggle Button -->
-    <button class="dark-mode-toggle" id="dark-mode-toggle" aria-label="Toggle Dark Mode">
-        <i class="fas fa-moon"></i>
-    </button>
 
-    <!-- Header / Navigation -->
-    <header>
-        <div class="container">
-            <div class="logo">
-                <a href="#">MyPortfolio</a>
+    <div class="login-container">
+        <h2>Student Login</h2>
+        <form id="loginForm">
+            <div class="input-group">
+                <label for="studentID">Student ID</label>
+                <input type="text" id="studentID" placeholder="Enter your Student ID" required>
             </div>
-            <nav>
-                <ul id="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-                <div class="hamburger" id="hamburger">
-                    <i class="fas fa-bars"></i>
-                </div>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Home / Hero Section -->
-    <section id="home">
-        <div class="content container">
-            <h1>Hello, I'm <span>Your Name</span></h1>
-            <p>I'm a <strong>Web Developer</strong> specializing in creating dynamic and beautiful web pages.</p>
-            <a href="#projects" class="btn">View My Work</a>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about">
-        <div class="container">
-            <h2>About Me</h2>
-            <div class="about-content">
-                <img src="https://images.google.com/photo1.jpg" alt="Profile Picture">
-                <div class="about-text">
-                    <p>
-                        I'm a passionate web developer with over 5 years of experience in building responsive and user-friendly websites. I enjoy turning complex problems into simple, beautiful, and intuitive designs.
-                    </p>
-                    <p>
-                        My expertise includes HTML, CSS, JavaScript, and modern frameworks like React and Vue.js. I am always eager to learn new technologies and take on new challenges.
-                    </p>
-                    <a href="https://drive.google.com/uc?export=download&id=YOUR_RESUME_FILE_ID" class="btn" target="_blank" rel="noopener">Download Resume</a>
-                </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter your password" required>
             </div>
-        </div>
-    </section>
+            <button type="submit" class="btn">Login</button>
+            <p class="error-message" id="errorMessage"></p>
+            <p class="success-message" id="successMessage"></p>
+        </form>
+    </div>
 
-    <!-- Projects Section -->
-    <section id="projects">
-        <div class="container">
-            <h2>My Projects</h2>
-            <div class="projects-grid">
-                <!-- Project Item 1 -->
-                <div class="project-item">
-                    <img src="https://images.google.com/project1.jpg" alt="Project One">
-                    <div class="project-info">
-                        <h3>Project One</h3>
-                        <p>A brief description of Project One, highlighting the technologies used and the problem it solves.</p>
-                        <a href="#" class="btn">View Project</a>
-                    </div>
-                </div>
-                <!-- Project Item 2 -->
-                <div class="project-item">
-                    <img src="https://images.google.com/project2.jpg" alt="Project Two">
-                    <div class="project-info">
-                        <h3>Project Two</h3>
-                        <p>A brief description of Project Two, highlighting the technologies used and the problem it solves.</p>
-                        <a href="#" class="btn">View Project</a>
-                    </div>
-                </div>
-                <!-- Project Item 3 -->
-                <div class="project-item">
-                    <img src="https://images.google.com/project3.jpg" alt="Project Three">
-                    <div class="project-info">
-                        <h3>Project Three</h3>
-                        <p>A brief description of Project Three, highlighting the technologies used and the problem it solves.</p>
-                        <a href="#" class="btn">View Project</a>
-                    </div>
-                </div>
-                <!-- Add more project items as needed -->
-            </div>
-        </div>
-    </section>
+    <script>
+        // JavaScript to handle form submission and validation
+        document.getElementById('loginForm').addEventListener('submit', function (e) {
+            e.preventDefault(); // Prevent form submission to backend (for demo)
 
-    <!-- Skills Section -->
-    <section id="skills">
-        <div class="container">
-            <h2>My Skills</h2>
-            <div class="skills-grid">
-                <!-- Skill 1 -->
-                <div class="skill">
-                    <i class="fab fa-html5"></i>
-                    <h3>HTML5</h3>
-                    <div class="progress">
-                        <div class="progress-bar" style="width: 90%;"></div>
-                    </div>
-                </div>
-                <!-- Skill 2 -->
-                <div class="skill">
-                    <i class="fab fa-css3-alt"></i>
-                    <h3>CSS3</h3>
-                    <div class="progress">
-                        <div class="progress-bar" style="width: 85%;"></div>
-                    </div>
-                </div>
-                <!-- Skill 3 -->
-                <div class="skill">
-                    <i class="fab fa-js"></i>
-                    <h3>JavaScript</h3>
-                    <div class="progress">
-                        <div class="progress-bar" style="width: 80%;"></div>
-                    </div>
-                </div>
-                <!-- Skill 4 -->
-                <div class="skill">
-                    <i class="fab fa-react"></i>
-                    <h3>React</h3>
-                    <div class="progress">
-                        <div class="progress-bar" style="width: 75%;"></div>
-                    </div>
-                </div>
-                <!-- Skill 5 -->
-                <div class="skill">
-                    <i class="fab fa-node"></i>
-                    <h3>Node.js</h3>
-                    <div class="progress">
-                        <div class="progress-bar" style="width: 70%;"></div>
-                    </div>
-                </div>
-                <!-- Add more skills as needed -->
-            </div>
-        </div>
-    </section>
+            const studentID = document.getElementById('studentID').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const errorMessage = document.getElementById('errorMessage');
+            const successMessage = document.getElementById('successMessage');
 
-    <!-- Contact Section -->
-    <section id="contact">
-        <div class="container">
-            <h2>Contact Me</h2>
-            <form id="contact-form">
-                <div class="form-group">
-                    <label for="name">Name <span style="color:red;">*</span></label>
-                    <input type="text" id="name" name="name" placeholder="Your Name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email <span style="color:red;">*</span></label>
-                    <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
-                </div>
-         
+            // Clear previous messages
+            errorMessage.style.display = 'none';
+            successMessage.style.display = 'none';
+
+            // Validate input fields
+            if (studentID === '' || password === '') {
+                errorMessage.textContent = 'All fields are required.';
+                errorMessage.style.display = 'block';
+                return;
+            }
+
+            // Example validation: Check if Student ID is numeric and password length >= 6
+            if (isNaN(studentID)) {
+                errorMessage.textContent = 'Student ID must be a number.';
+                errorMessage.style.display = 'block';
+                return;
+            }
+
+            if (password.length < 6) {
+                errorMessage.textContent = 'Password must be at least 6 characters long.';
+                errorMessage.style.display = 'block';
+                return;
+            }
+
+            // Simulate a successful login (can be replaced with backend authentication)
+            successMessage.textContent = 'Login successful!';
+            successMessage.style.display = 'block';
+
+            // Redirect to another page after a brief delay (optional)
+            setTimeout(() => {
+                window.location.href = 'dashboard.html'; // Replace with the desired page
+            }, 2000);
+        });
+    </script>
+
+</body>
+</html>
